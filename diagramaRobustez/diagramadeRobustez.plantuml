@@ -1,0 +1,67 @@
+@startuml
+
+left to right direction
+skinparam packageStyle rect
+actor administrador
+boundary FE_pantalla_Ingresar_Usuario
+control click_en_ingresar
+control Registrarse
+boundary ingresar_datos_personales
+control click_guardar_perfil
+control guardar_perfil_BD
+boundary menú
+control click_en_pedidos
+control click_en_historial
+control click_en_cuadrar_caja
+control click_en_reporte_diario
+control click_en_cerrar_sesion
+boundary pedidos
+boundary historial
+boundary cuadrar_caja
+boundary reporte_diario
+boundary cerrar_sesion
+control crear_pedido
+control cancelar_pedido
+control modificar_pedido
+control ocupar_mesa
+control registrar_pago
+boundary pantalla_para_ordenar 
+boundary mesas_activas
+control click_confirmar_orden
+control subir_orden
+control abre_excel
+boundary pantalla_pagos
+control facturar
+
+administrador -> FE_pantalla_Ingresar_Usuario : ingresa usuario
+FE_pantalla_Ingresar_Usuario --> click_en_ingresar
+FE_pantalla_Ingresar_Usuario --> Registrarse
+Registrarse --> ingresar_datos_personales
+ingresar_datos_personales --> click_guardar_perfil
+click_guardar_perfil --> guardar_perfil_BD
+click_en_ingresar --> menú
+menú --> click_en_pedidos
+menú --> click_en_historial
+menú --> click_en_cuadrar_caja
+menú --> click_en_reporte_diario
+menú --> click_en_cerrar_sesion
+click_en_pedidos --> pedidos
+click_en_historial --> historial
+click_en_cuadrar_caja--> cuadrar_caja
+click_en_reporte_diario --> reporte_diario
+click_en_cerrar_sesion -- cerrar_sesion
+pedidos --> crear_pedido
+pedidos --> cancelar_pedido
+pedidos --> modificar_pedido
+pedidos --> ocupar_mesa
+pedidos --> registrar_pago
+crear_pedido --> pantalla_para_ordenar
+modificar_pedido --> pantalla_para_ordenar
+ocupar_mesa --> mesas_activas
+pantalla_para_ordenar --> click_confirmar_orden
+click_confirmar_orden --> subir_orden
+cuadrar_caja -->  abre_excel
+registrar_pago --> pantalla_pagos
+pantalla_pagos --> facturar
+
+@enduml

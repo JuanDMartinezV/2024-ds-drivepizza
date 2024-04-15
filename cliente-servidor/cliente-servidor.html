@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <title>Drive Pizza</title>
+        <style>
+             body {
+            background-image: url('Cartago.jpg'); 
+            font-family: Candara, sans-serif; 
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .titulo {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 15px; 
+            display: inline-block; 
+            margin-bottom: 20px; 
+        }
+
+        h1, h2 {
+            margin: 0;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        select, input[type="date"], input[type="submit"], input[type="time"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 20px; 
+            width: 190px; 
+        }
+    </style>
+</head>
+    <body>
+
+        <div class="titulo">
+            <img src="LogoDrive.jpg" alt="Logo Drive Pizza" class="logo"> 
+            <h1>Bienvenido a Drive Pizza</h1>
+            <h2>La mejor pizza de la ciudad</h2>
+        </div>
+
+        
+        <form action="cliente-servidor.php" method="post">
+            <h2>Reservacion</h2> 
+            <input type="date" name="fecha" />
+            <input type="time" name="hora" />
+
+             <br/>
+             <input type="submit" name="reservar" value="Reservar">
+            <hr/>
+            
+            <h2>Ordenar</h2>
+            <h3>Tamaño</h3>
+            <select name="tamaño">
+                <option value="PEQ">Pequeña</option>
+                <option value="MED">Mediana</option>
+                <option value="GRA">Grande</option>
+
+            </select>
+            <h3>Ingredientes</h3>
+            <br/>
+                <label><input type="checkbox" name="ingredientes[]" value="Jamón"> Jamón</label>
+                <label><input type="checkbox" name="ingredientes[]" value="Pepperoni"> Pepperoni</label><br/>
+                <label><input type="checkbox" name="ingredientes[]" value="Champiñones"> Champiñones</label>
+                <label><input type="checkbox" name="ingredientes[]" value="Pimientos"> Pimientos</label><br/>
+                <label><input type="checkbox" name="ingredientes[]" value="Aceitunas"> Aceitunas</label><br/>
+                <label><input type="checkbox" name="ingredientes[]" value="Chorizo"> Chorizo</label>
+                <label><input type="checkbox" name="ingredientes[]" value="Piña"> Piña</label><br/>
+                <label><input type="checkbox" name="ingredientes[]" value="Tomate"> Tomate</label>
+                <label><input type="checkbox" name="ingredientes[]" value="Pollo"> Pollo</label><br/>
+                <label><input type="checkbox" name="ingredientes[]" value="Jalapeño"> Jalapeño</label><br/>
+            <br/>
+
+            <input type="submit" value="Guardar">
+        </form>
+    </body>
+</html>
+

@@ -1,38 +1,36 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import PizzeriaModel from './DrivePizza-Model.js';
+// server.js
 
+const express = require('express');
+const { PrismaClient } = require('@prisma/client');
+
+const prisma = new PrismaClient();
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // Para manejar solicitudes JSON
 
-const pizzeriaModel = new PizzeriaModel();
-pizzeriaModel.connect();
-
-// Endpoint para reservar una mesa
+// Manejar la solicitud POST desde el formulario de reserva
 app.post('/reservar', async (req, res) => {
-  const { fecha, hora } = req.body;
   try {
-    const reservationId = await pizzeriaModel.saveReservation(fecha, hora);
-    res.send(`Reserva realizada con éxito. ID: ${reservationId}`);
-  } catch (error) {
-    res.status(500).send('Error al realizar la reserva: ' + error.message);
-  }
-});
+    const { fecha, hora } = req.body;
 
-// Endpoint para crear un pedido
-app.post('/crear-pedido', async (req, res) => {
-  const { tamano, ingredientes } = req.body;
-  try {
-    const pedidoId = await pizzeriaModel.savePedido(tamano, ingredientes);
-    res.send(`Pedido creado con éxito. ID: ${pedidoId}`);
+    // Guardar la reserva en la base de datos
+    const reserva = await prisma.reserva.create({
+      data: {
+        fecha,
+        hora,
+      },
+    });
+
+    // Redirigir a la página de reserva con la información de la reserva en la URL
+    res.redirect(`/reserva.html?fecha=${reserva.fecha}&hora=${reserva.hora}`);
   } catch (error) {
-    res.status(500).send('Error al crear el pedido: ' + error.message);
+    console.error('Error al guardar la reserva:', error);
+    res.status(500).send('Error al guardar la reserva');
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Servidor en funcionamiento en el puerto ${PORT}`);
 });

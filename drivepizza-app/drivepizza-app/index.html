@@ -1,34 +1,95 @@
-<!DOCTYPE html>
 <html>
 <head>
-    <title>Drive pizza</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive Pizza</title>
+    <style>
+        body {
+            background-image: url('Cartago.jpg'); 
+            font-family: Candara, sans-serif; 
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .titulo {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 15px; 
+            display: inline-block; 
+            margin-bottom: 20px; 
+        }
+
+        h1, h2 {
+            margin: 0;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        select, input[type="date"], input[type="submit"], input[type="time"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 20px; 
+            width: 190px; 
+        }
+    </style>
 </head>
 <body>
-    
-    <form action="http://localhost:3000/reservar" method="POST">
-        <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" name="fecha" required><br>
+    <div class="titulo">
+        <img src="LogoDrive.jpg" alt="Logo Drive Pizza" class="logo"> 
+        <h1>Bienvenido a Drive Pizza</h1>
+        <h2>La mejor pizza de la ciudad</h2>
+    </div>
 
-        <label for="hora">Hora:</label>
-        <input type="time" id="hora" name="hora" required><br>
+    <form id="reservationForm" action="reservar.html" method="POST">
+        <h2>Reservación</h2> 
+        <input type="date" name="fecha" required>
+        <input type="time" name="hora" required>
+        <br>
         <input type="submit" value="Reservar">
-    </form>
-
-    
-    <form action="http://localhost:3000/crear-pedido" method="POST">
-        <label for="tamano">Tamaño:</label>
-        <select id="tamano" name="tamano">
+        <hr>
+        
+        <h2>Ordenar</h2>
+        <h3>Tamaño</h3>
+        <select name="tamano">
             <option value="PEQ">Pequeña</option>
             <option value="MED">Mediana</option>
             <option value="GRA">Grande</option>
-        </select><br>
-
-        <label for="ingredientes">Ingredientes:</label><br>
-        <input type="checkbox" name="ingredientes" value="Queso"> Queso<br>
-        <input type="checkbox" name="ingredientes" value="Pepperoni"> Pepperoni<br>
-        <input type="checkbox" name="ingredientes" value="Champiñones"> Champiñones<br>
-        <input type="checkbox" name="ingredientes" value="Jamón"> Jamón<br>
-
+        </select>
+        <h3>Ingredientes</h3>
+        <br>
+        <label><input type="checkbox" name="ingredientes" value="Jamón"> Jamón</label>
+        <label><input type="checkbox" name="ingredientes" value="Pepperoni"> Pepperoni</label><br>
+        <label><input type="checkbox" name="ingredientes" value="Champiñones"> Champiñones</label>
+        <label><input type="checkbox" name="ingredientes" value="Pimientos"> Pimientos</label><br>
+        <label><input type="checkbox" name="ingredientes" value="Aceitunas"> Aceitunas</label><br>
+        <label><input type="checkbox" name="ingredientes" value="Chorizo"> Chorizo</label>
+        <label><input type="checkbox" name="ingredientes" value="Piña"> Piña</label><br>
+        <label><input type="checkbox" name="ingredientes" value="Tomate"> Tomate</label>
+        <label><input type="checkbox" name="ingredientes" value="Pollo"> Pollo</label><br>
+        <label><input type="checkbox" name="ingredientes" value="Jalapeño"> Jalapeño</label><br>
+        <br>
         <input type="submit" value="Generar Orden">
     </form>
 </body>

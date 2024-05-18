@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva Confirmada - Drive Pizza</title>
+    <style>
+        /* Estilos aquí */
+    </style>
+</head>
+<body>
+    <div class="titulo">
+        <img src="LogoDrive.jpg" alt="Logo Drive Pizza" class="logo"> 
+        <h1>Bienvenido a Drive Pizza</h1>
+        <h2>Reserva Confirmada</h2>
+    </div>
+
+    <div id="info" style="background-color: #f0f0f0; border: 1px solid #ccc; padding: 10px; margin-top: 20px;">
+        <!-- Aquí se mostrará la información de la reserva -->
+    </div>
+
+    <script>
+        // Obtener los parámetros de la URL (fecha y hora)
+        const urlParams = new URLSearchParams(window.location.search);
+        const fecha = urlParams.get('fecha');
+        const hora = urlParams.get('hora');
+
+        // Mostrar la información de la reserva
+        const infoDiv = document.getElementById('info');
+        infoDiv.innerHTML = `<p>Has seleccionado la siguiente fecha y hora:</p><p><strong>Fecha:</strong> ${fecha}</p><p><strong>Hora:</strong> ${hora}</p>`;
+    </script>
+</body>
+</html>

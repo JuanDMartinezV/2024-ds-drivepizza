@@ -1,0 +1,60 @@
+@startuml
+
+class Usuario {
+    string nombreUsuario 
+    string contraseña 
+    string rol
+
+}
+
+class NuevoUsuario {
+    string nombre
+    string documento
+    date nacimiento
+    int celular
+    string direccion
+}
+
+class Reportes {
+    float ventasDiarias
+    float ventasMensuales
+    float productosDiarios
+
+}
+
+class Orden {
+    string producto
+    int cantidad
+    string especificacionesProducto
+    string datosNuevos
+    float precio
+}
+
+class Administracion {
+    arrayList ordenesActivas
+    arrayList ordenesCanceladas
+    arrayList domicilios
+    arrayList mesasOcupadas
+
+}
+
+class Pago {
+    string metododepago
+    string codigoDescuento
+    float precioTotal
+}
+
+class PagoDigital {
+    int numeroTarjeta
+    int codigoSeguridad
+    date fechaVencimiento
+}
+
+Usuario  --o  Orden : Realiza
+NuevoUsuario --|> Usuario
+Reportes  --  Orden : Genera
+Administracion --  Orden : Gestiona
+Pago  o--  Orden : Realiza
+PagoDigital --|> Pago
+
+@enduml

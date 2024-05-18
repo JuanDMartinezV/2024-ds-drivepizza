@@ -1,0 +1,49 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor Cliente
+actor Administrador
+package Colaboradores{
+actor Mesero
+actor Cocinero
+}
+
+
+rectangle "Drive Pizza" {
+  usecase "Realizar Pedido" as RealizarPedido
+  usecase "Visualizar pedido" as VisualizarPedido
+  usecase "Modificar Pedido" as ModificarPedido
+  usecase "Cancelar Pedido" as CancelarPedido
+  usecase "Gestionar Inventarios" as GestionarInventarios
+  usecase "Generar Reportes" as GenerarReportes
+  usecase "Cuadrar Caja" as CuadrarCaja
+  usecase "Pagar" as Pagar
+  usecase "Generar factura" as GenerarFactura  
+  usecase "Ocupar mesas" as OcuparMesa
+
+
+  Cliente --> (RealizarPedido)
+  Cliente --> (CancelarPedido)
+  Cliente --> (Pagar)
+  Cliente --> (VisualizarPedido)
+  Cliente --> (GenerarFactura)
+
+  Mesero --> (RealizarPedido)
+  Mesero --> (VisualizarPedido)
+  Mesero --> (OcuparMesa)
+
+  Cocinero --> (VisualizarPedido)
+
+  Administrador -up-> (RealizarPedido)
+  Administrador -up-> (ModificarPedido)
+  Administrador  -left-> (CancelarPedido)
+  Administrador -left-> (GenerarReportes)
+  Administrador -left-> (CuadrarCaja)
+  Administrador -left-> (GestionarInventarios)
+  Administrador -left-> (VisualizarPedido)
+  Administrador  -left-> (Pagar)
+  Administrador -left-> (GenerarFactura)
+  Administrador -left-> (OcuparMesa)
+}
+@enduml

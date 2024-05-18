@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drive pizza</title>
+</head>
+<body>
+    
+    <form action="http://localhost:3000/reservar" method="POST">
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required><br>
+
+        <label for="hora">Hora:</label>
+        <input type="time" id="hora" name="hora" required><br>
+        <input type="submit" value="Reservar">
+    </form>
+
+    
+    <form action="http://localhost:3000/crear-pedido" method="POST">
+        <label for="tamano">Tamaño:</label>
+        <select id="tamano" name="tamano">
+            <option value="PEQ">Pequeña</option>
+            <option value="MED">Mediana</option>
+            <option value="GRA">Grande</option>
+        </select><br>
+
+        <label for="ingredientes">Ingredientes:</label><br>
+        <input type="checkbox" name="ingredientes" value="Queso"> Queso<br>
+        <input type="checkbox" name="ingredientes" value="Pepperoni"> Pepperoni<br>
+        <input type="checkbox" name="ingredientes" value="Champiñones"> Champiñones<br>
+        <input type="checkbox" name="ingredientes" value="Jamón"> Jamón<br>
+
+        <input type="submit" value="Generar Orden">
+    </form>
+</body>
+</html>
